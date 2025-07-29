@@ -32,6 +32,16 @@ a{
     color:white;
 }
 
+
+ul{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+li{
+    margin: 10px 0;
+}
 ul li::marker{
     color: purple;
 }
