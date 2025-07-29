@@ -1,0 +1,188 @@
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #3498db;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            color: #e74c3c;
+            margin-top: 30px;
+        }
+        
+        .diagram {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .energy-bar {
+            display: inline-block;
+            height: 30px;
+            margin: 5px;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            line-height: 30px;
+            vertical-align: middle;
+            transition: all 0.3s ease;
+        }
+        
+        .kinetic { background: #e74c3c; }
+        .potential { background: #3498db; }
+        .thermal { background: #f39c12; }
+        .chemical { background: #27ae60; }
+        .electrical { background: #9b59b6; }
+        
+        .formula {
+            background: #ecf0f1;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+        
+        .example {
+            background: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .conservation-box {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #856404;
+        }
+        
+        .object {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 10px;
+            position: relative;
+            border: 2px solid #2c3e50;
+        }
+        
+        .ball {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 10px;
+            border: 2px solid #2c3e50;
+        }
+        
+        .velocity-arrow {
+            stroke: #e74c3c;
+            stroke-width: 3;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+        
+        .momentum-arrow {
+            stroke: #9b59b6;
+            stroke-width: 4;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+        
+        .energy-flow {
+            stroke: #f39c12;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 5,5;
+            animation: flow 2s linear infinite;
+        }
+        
+        @keyframes flow {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 20; }
+        }
+        
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .efficiency-meter {
+            background: #ecf0f1;
+            border-radius: 20px;
+            height: 20px;
+            margin: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .efficiency-fill {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #27ae60);
+            transition: width 1s ease;
+        }
+        
+        .interactive-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .collision-stage {
+            display: none;
+        }
+        
+        .collision-stage.active {
+            display: block;
+        }

@@ -1,0 +1,130 @@
+ body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #3498db;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            color: #e74c3c;
+            margin-top: 30px;
+        }
+        
+        .diagram {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .force-arrow {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            position: relative;
+            font-weight: bold;
+        }
+        
+        .force-arrow::after {
+            content: '→';
+            position: absolute;
+            right: -15px;
+            font-size: 1.2em;
+        }
+        
+        .object {
+            display: inline-block;
+            background: #95a5a6;
+            width: 60px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 10px;
+            position: relative;
+            border: 2px solid #7f8c8d;
+        }
+        
+        .ball {
+            display: inline-block;
+            background: #f39c12;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 10px;
+            border: 2px solid #e67e22;
+        }
+        
+        .formula {
+            background: #ecf0f1;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+        
+        .example {
+            background: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .motion-path {
+            stroke: #3498db;
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 10,5;
+        }
+        
+        .velocity-vector {
+            stroke: #e74c3c;
+            stroke-width: 3;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+        
+        .acceleration-vector {
+            stroke: #f39c12;
+            stroke-width: 3;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+        
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
