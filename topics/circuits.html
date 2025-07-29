@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current & Potential Difference in Series and Parallel Circuits</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.3);
+        }
+        .subtitle {
+            color: #444;
+            font-size: 1.2em;
+        }
+        .section {
+            background: rgba(255,255,255,0.97);
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.13);
+        }
+        h2 {
+            color: #f7971e;
+            font-size: 2em;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #ffd200;
+            padding-bottom: 8px;
+        }
+        h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+        p, ul {
+            color: #444;
+            font-size: 1.08em;
+        }
+        .diagram-container {
+            background: #f8f9fa;
+            border: 2px solid #ffe082;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #fffde4 0%, #f7971e 100%);
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 5px solid #ffd200;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255,255,255,0.13);
+            border-radius: 15px;
+            color: #333;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 10px; }
+            .section { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔌 Series & Parallel Circuits</h1>
+            <p class="subtitle">How current and potential difference behave in different circuit types</p>
+        </header>
+
+        <div class="section">
+            <h2>What are Series and Parallel Circuits?</h2>
+            <p>
+                <strong>Series circuits</strong> have components connected end-to-end, so there is only one path for current to flow.<br>
+                <strong>Parallel circuits</strong> have components connected across common points, creating multiple paths for current.
+            </p>
+            <div class="diagram-container">
+                <!-- Series and Parallel Circuit Diagrams -->
+                <svg width="500" height="180" viewBox="0 0 500 180">
+                    <!-- Series Circuit -->
+                    <text x="80" y="25" font-size="16" fill="#f7971e" font-weight="bold">Series Circuit</text>
+                    <!-- Battery -->
+                    <rect x="30" y="50" width="10" height="40" fill="#333"/>
+                    <rect x="42" y="60" width="4" height="20" fill="#ffd200"/>
+                    <!-- Wires -->
+                    <line x1="40" y1="70" x2="100" y2="70" stroke="#888" stroke-width="3"/>
+                    <line x1="160" y1="70" x2="220" y2="70" stroke="#888" stroke-width="3"/>
+                    <line x1="220" y1="70" x2="220" y2="110" stroke="#888" stroke-width="3"/>
+                    <line x1="220" y1="110" x2="40" y2="110" stroke="#888" stroke-width="3"/>
+                    <line x1="40" y1="110" x2="40" y2="70" stroke="#888" stroke-width="3"/>
+                    <!-- Bulbs -->
+                    <circle cx="130" cy="70" r="15" fill="#fff" stroke="#f7971e" stroke-width="3"/>
+                    <circle cx="190" cy="70" r="15" fill="#fff" stroke="#f7971e" stroke-width="3"/>
+                    <text x="130" y="75" font-size="12" fill="#f7971e" text-anchor="middle">A</text>
+                    <text x="190" y="75" font-size="12" fill="#f7971e" text-anchor="middle">B</text>
+                    <!-- Parallel Circuit -->
+                    <text x="320" y="25" font-size="16" fill="#f7971e" font-weight="bold">Parallel Circuit</text>
+                    <!-- Battery -->
+                    <rect x="270" y="50" width="10" height="40" fill="#333"/>
+                    <rect x="282" y="60" width="4" height="20" fill="#ffd200"/>
+                    <!-- Main wires -->
+                    <line x1="280" y1="70" x2="340" y2="70" stroke="#888" stroke-width="3"/>
+                    <line x1="400" y1="70" x2="460" y2="70" stroke="#888" stroke-width="3"/>
+                    <line x1="460" y1="70" x2="460" y2="110" stroke="#888" stroke-width="3"/>
+                    <line x1="460" y1="110" x2="280" y2="110" stroke="#888" stroke-width="3"/>
+                    <line x1="280" y1="110" x2="280" y2="70" stroke="#888" stroke-width="3"/>
+                    <!-- Branches -->
+                    <line x1="340" y1="70" x2="340" y2="110" stroke="#888" stroke-width="3"/>
+                    <line x1="400" y1="70" x2="400" y2="110" stroke="#888" stroke-width="3"/>
+                    <!-- Bulbs -->
+                    <circle cx="340" cy="90" r="15" fill="#fff" stroke="#f7971e" stroke-width="3"/>
+                    <circle cx="400" cy="90" r="15" fill="#fff" stroke="#f7971e" stroke-width="3"/>
+                    <text x="340" y="95" font-size="12" fill="#f7971e" text-anchor="middle">A</text>
+                    <text x="400" y="95" font-size="12" fill="#f7971e" text-anchor="middle">B</text>
+                </svg>
+                <div style="margin-top:8px; color:#888; font-size:0.98em;">
+                    Left: Series circuit (one path) &nbsp; | &nbsp; Right: Parallel circuit (multiple paths)
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Current in Series and Parallel Circuits</h2>
+            <div class="highlight">
+                <h3>Series Circuit:</h3>
+                <ul>
+                    <li>The <strong>current</strong> is the same at every point in the circuit.</li>
+                    <li>If one component breaks, the whole circuit stops working.</li>
+                </ul>
+                <h3>Parallel Circuit:</h3>
+                <ul>
+                    <li>The <strong>total current</strong> is shared between the branches.</li>
+                    <li>Current in each branch depends on the resistance of that branch.</li>
+                    <li>If one branch breaks, current can still flow in the others.</li>
+                </ul>
+            </div>
+            <div class="diagram-container">
+                <!-- Current Arrows Diagram -->
+                <svg width="500" height="120" viewBox="0 0 500 120">
+                    <!-- Series circuit current arrows -->
+                    <line x1="60" y1="60" x2="200" y2="60" stroke="#888" stroke-width="3"/>
+                    <polygon points="200,60 190,55 190,65" fill="#f7971e"/>
+                    <text x="80" y="50" font-size="13" fill="#f7971e">I</text>
+                    <text x="140" y="50" font-size="13" fill="#f7971e">I</text>
+                    <text x="180" y="50" font-size="13" fill="#f7971e">I</text>
+                    <text x="60" y="80" font-size="13" fill="#888">Series: Current is the same everywhere</text>
+                    <!-- Parallel circuit current arrows -->
+                    <line x1="320" y1="60" x2="400" y2="60" stroke="#888" stroke-width="3"/>
+                    <polygon points="400,60 390,55 390,65" fill="#f7971e"/>
+                    <line x1="360" y1="60" x2="360" y2="90" stroke="#888" stroke-width="3"/>
+                    <polygon points="360,90 355,80 365,80" fill="#f7971e"/>
+                    <line x1="380" y1="60" x2="380" y2="90" stroke="#888" stroke-width="3"/>
+                    <polygon points="380,90 375,80 385,80" fill="#f7971e"/>
+                    <text x="340" y="50" font-size="13" fill="#f7971e">I</text>
+                    <text x="355" y="105" font-size="13" fill="#f7971e">I₁</text>
+                    <text x="375" y="105" font-size="13" fill="#f7971e">I₂</text>
+                    <text x="320" y="80" font-size="13" fill="#888">Parallel: Current splits at branches</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Potential Difference (Voltage) in Series and Parallel Circuits</h2>
+            <div class="highlight">
+                <h3>Series Circuit:</h3>
+                <ul>
+                    <li>The <strong>total potential difference</strong> (voltage) is shared between all components.</li>
+                    <li>The sum of voltages across each component equals the total voltage supplied.</li>
+                </ul>
+                <h3>Parallel Circuit:</h3>
+                <ul>
+                    <li>The <strong>potential difference</strong> across each branch is the same as the supply voltage.</li>
+                    <li>Each branch receives the full voltage of the power source.</li>
+                </ul>
+            </div>
+            <div class="diagram-container">
+                <!-- Voltage Diagram -->
+                <svg width="500" height="120" viewBox="0 0 500 120">
+                    <!-- Series circuit voltage -->
+                    <rect x="60" y="40" width="20" height="40" fill="#ffd200" stroke="#f7971e" stroke-width="2"/>
+                    <rect x="120" y="40" width="20" height="40" fill="#ffd200" stroke="#f7971e" stroke-width="2"/>
+                    <rect x="180" y="40" width="20" height="40" fill="#ffd200" stroke="#f7971e" stroke-width="2"/>
+                    <text x="70" y="65" font-size="13" fill="#f7971e" text-anchor="middle">V₁</text>
+                    <text x="130" y="65" font-size="13" fill="#f7971e" text-anchor="middle">V₂</text>
+                    <text x="190" y="65" font-size="13" fill="#f7971e" text-anchor="middle">V₃</text>
+                    <text x="60" y="100" font-size="13" fill="#888">Series: Voltage is shared</text>
+                    <!-- Parallel circuit voltage -->
+                    <rect x="320" y="40" width="20" height="40" fill="#ffd200" stroke="#f7971e" stroke-width="2"/>
+                    <rect x="320" y="80" width="20" height="40" fill="#ffd200" stroke="#f7971e" stroke-width="2"/>
+                    <text x="330" y="65" font-size="13" fill="#f7971e" text-anchor="middle">V</text>
+                    <text x="330" y="105" font-size="13" fill="#f7971e" text-anchor="middle">V</text>
+                    <text x="320" y="100" font-size="13" fill="#888">Parallel: Voltage is the same</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Summary Table</h2>
+            <div class="diagram-container" style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; font-size:1.08em;">
+                    <tr style="background:#ffe082;">
+                        <th style="padding:8px; border:1px solid #ffd200;">Property</th>
+                        <th style="padding:8px; border:1px solid #ffd200;">Series Circuit</th>
+                        <th style="padding:8px; border:1px solid #ffd200;">Parallel Circuit</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px; border:1px solid #ffd200;">Current</td>
+                        <td style="padding:8px; border:1px solid #ffd200;">Same everywhere</td>
+                        <td style="padding:8px; border:1px solid #ffd200;">Splits between branches</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px; border:1px solid #ffd200;">Potential Difference (Voltage)</td>
+                        <td style="padding:8px; border:1px solid #ffd200;">Shared between components</td>
+                        <td style="padding:8px; border:1px solid #ffd200;">Same across each branch</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px; border:1px solid #ffd200;">Effect of a break</td>
+                        <td style="padding:8px; border:1px solid #ffd200;">Whole circuit stops</td>
+                        <td style="padding:8px; border:1px solid #ffd200;">Other branches still work</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 Circuits & Electricity | Educational Resource
+        </div>
+    </div>
+</body>
+</html>
