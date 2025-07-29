@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Light: Reflection, Refraction & Optics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+            position: relative;
+        }
+
+        h3:before {
+            content: "▶";
+            color: #3498db;
+            margin-right: 10px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .diagram-container {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .formula {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.3em;
+            text-align: center;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+            margin: 20px 0;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .nav-menu a {
+            display: block;
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .interactive-demo {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .demo-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            margin: 10px;
+        }
+
+        .demo-button:hover {
+            background: white;
+            color: #FF6B6B;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            color: white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-menu">
+        <a href="#straight-line">Straight-Line Model</a>
+        <a href="#reflection">Reflection</a>
+        <a href="#refraction">Refraction</a>
+        <a href="#periscope">Periscope</a>
+        <a href="#total-internal">Total Internal Reflection</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>🌟 Understanding Light & Optics</h1>
+            <p class="subtitle">Exploring the fundamental principles of light behavior</p>
+        </header>
+
+        <div class="section" id="straight-line">
+            <h2>🔦 The Straight-Line Model of Light</h2>
+            <p>Light travels in straight lines through a uniform medium - this is the fundamental principle of <strong>rectilinear propagation</strong>. This behavior explains many everyday optical phenomena we observe.</p>
+            
+            <div class="highlight">
+                <h3>Key Characteristics:</h3>
+                <p>• Light maintains its direction in homogeneous media</p>
+                <p>• Creates sharp shadows and distinct light beams</p>
+                <p>• Forms the basis for ray optics and geometric optics</p>
+                <p>• Explains why we can aim flashlights and laser pointers accurately</p>
+            </div>
+
+            <div class="diagram-container">
+                <svg width="500" height="200" viewBox="0 0 500 200">
+                    <rect width="500" height="200" fill="#f8f9fa"/>
+                    <text x="250" y="20" text-anchor="middle" font-size="16" font-weight="bold">Light Travels in Straight Lines</text>
+                    
+                    <!-- Light source -->
+                    <circle cx="50" cy="100" r="15" fill="#FFD700" stroke="#FFA500" stroke-width="3"/>
+                    <text x="50" y="135" text-anchor="middle" font-size="12">Light Source</text>
+                    
+                    <!-- Light rays -->
+                    <line x1="65" y1="85" x2="400" y2="50" stroke="#FF6B6B" stroke-width="3"/>
+                    <line x1="65" y1="100" x2="400" y2="100" stroke="#FF6B6B" stroke-width="3"/>
+                    <line x1="65" y1="115" x2="400" y2="150" stroke="#FF6B6B" stroke-width="3"/>
+                    
+                    <!-- Arrows -->
+                    <polygon points="395,47 400,50 395,53" fill="#FF6B6B"/>
+                    <polygon points="395,97 400,100 395,103" fill="#FF6B6B"/>
+                    <polygon points="395,147 400,150 395,153" fill="#FF6B6B"/>
+                    
+                    <text x="250" y="180" text-anchor="middle" font-size="12" fill="#666">Parallel light rays maintain their direction</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="section" id="reflection">
+            <h2>🪞 Laws of Reflection</h2>
+            <p>When light encounters a reflective surface, it bounces back following two fundamental laws that govern its behavior.</p>
+
+            <div class="formula">
+                Laws of Reflection:<br>
+                1. Incident ray, reflected ray, and normal lie in the same plane<br>
+                2. Angle of incidence = Angle of reflection (θᵢ = θᵣ)
+            </div>
+
+            <div class="diagram-container">
+                <svg width="600" height="400" viewBox="0 0 600 400">
+                    <rect width="600" height="400" fill="#f8f9fa"/>
+                    <text x="300" y="30" text-anchor="middle" font-size="18" font-weight="bold">Laws of Reflection</text>
+                    
+                    <!-- Mirror surface -->
+                    <line x1="100" y1="200" x2="500" y2="200" stroke="#2c3e50" stroke-width="6"/>
+                    <text x="300" y="230" text-anchor="middle" font-size="14" fill="#666">Mirror Surface</text>
+                    
+                    <!-- Normal line -->
+                    <line x1="300" y1="80" x2="300" y2="320" stroke="#e74c3c" stroke-width="3" stroke-dasharray="8,4"/>
+                    <text x="315" y="150" font-size="14" fill="#e74c3c">Normal</text>
+                    
+                    <!-- Incident ray -->
+                    <line x1="200" y1="120" x2="300" y2="200" stroke="#3498db" stroke-width="4"/>
+                    <polygon points="295,195 300,200 295,205" fill="#3498db"/>
+                    <text x="220" y="110" font-size="14" fill="#3498db" font-weight="bold">Incident Ray</text>
+                    
+                    <!-- Reflected ray -->
+                    <line x1="300" y1="200" x2="400" y2="120" stroke="#27ae60" stroke-width="4"/>
+                    <polygon points="395,125 400,120 405,125" fill="#27ae60"/>
+                    <text x="380" y="110" font-size="14" fill="#27ae60" font-weight="bold">Reflected Ray</text>
+                    
+                    <!-- Angle markings -->
+                    <path d="M 270 185 A 30 30 0 0 0 285 160" stroke="#e67e22" stroke-width="3" fill="none"/>
+                    <text x="250" y="175" font-size="16" fill="#e67e22" font-weight="bold">θᵢ</text>
+                    
+                    <path d="M 315 160 A 30 30 0 0 0 330 185" stroke="#e67e22" stroke-width="3" fill="none"/>
+                    <text x="335" y="175" font-size="16" fill="#e67e22" font-weight="bold">θᵣ</text>
+                    
+                    <!-- Equal sign -->
+                    <text x="300" y="350" text-anchor="middle" font-size="18" fill="#2c3e50" font-weight="bold">θᵢ = θᵣ</text>
+                </svg>
+            </div>
+
+            <div class="highlight">
+                <h3>Applications of Reflection:</h3>
+                <p>• Mirrors in bathrooms and cars</p>
+                <p>• Telescope mirrors focusing starlight</p>
+                <p>• Retroreflectors on road signs</p>
+                <p>• Solar concentrators and satellite dishes</p>
+            </div>
+        </div>
+
+        <div class="section" id="refraction">
+            <h2>🌊 Laws of Refraction (Snell's Law)</h2>
+            <p>When light passes from one medium to another with different optical density, it bends or refracts. This bending follows Snell's Law, one of the most important principles in optics.</p>
+
+            <div class="formula">
+                Snell's Law: n₁ sin θ₁ = n₂ sin θ₂<br>
+                Where n = refractive index, θ = angle from normal
+            </div>
+
+            <div class="diagram-container">
+                <svg width="600" height="450" viewBox="0 0 600 450">
+                    <rect width="600" height="450" fill="#f8f9fa"/>
+                    <text x="300" y="30" text-anchor="middle" font-size="18" font-weight="bold">Refraction of Light</text>
+                    
+                    <!-- Interface between media -->
+                    <line x1="100" y1="225" x2="500" y2="225" stroke="#2c3e50" stroke-width="6"/>
+                    
+                    <!-- Air medium -->
+                    <text x="150" y="200" font-size="14" fill="#87CEEB" font-weight="bold">Air (n₁ = 1.00)</text>
+                    <rect x="100" y="50" width="400" height="175" fill="#E6F3FF" opacity="0.3"/>
+                    
+                    <!-- Water/Glass medium -->
+                    <text x="150" y="250" font-size="14" fill="#4682B4" font-weight="bold">Water (n₂ = 1.33)</text>
+                    <rect x="100" y="225" width="400" height="175" fill="#B0E0E6" opacity="0.5"/>
+                    
+                    <!-- Normal line -->
+                    <line x1="300" y1="80" x2="300" y2="370" stroke="#e74c3c" stroke-width="3" stroke-dasharray="8,4"/>
+                    <text x="315" y="160" font-size="14" fill="#e74c3c">Normal</text>
+                    
+                    <!-- Incident ray -->
+                    <line x1="200" y1="140" x2="300" y2="225" stroke="#3498db" stroke-width="4"/>
+                    <polygon points="295,220 300,225 295,230" fill="#3498db"/>
+                    <text x="200" y="130" font-size="14" fill="#3498db" font-weight="bold">Incident Ray</text>
+                    
+                    <!-- Refracted ray -->
+                    <line x1="300" y1="225" x2="360" y2="330" stroke="#9b59b6" stroke-width="4"/>
+                    <polygon points="355,325 360,330 355,335" fill="#9b59b6"/>
+                    <text x="330" y="350" font-size="14" fill="#9b59b6" font-weight="bold">Refracted Ray</text>
+                    
+                    <!-- Angle markings -->
+                    <path d="M 275 210 A 25 25 0 0 0 285 190" stroke="#e67e22" stroke-width="3" fill="none"/>
+                    <text x="255" y="205" font-size="16" fill="#e67e22" font-weight="bold">θ₁</text>
+                    
+                    <path d="M 315 245 A 25 25 0 0 0 310 265" stroke="#e67e22" stroke-width="3" fill="none"/>
+                    <text x="325" y="265" font-size="16" fill="#e67e22" font-weight="bold">θ₂</text>
+                    
+                    <!-- Note about bending -->
+                    <text x="300" y="410" text-anchor="middle" font-size="14" fill="#666">Light bends toward the normal when entering a denser medium</text>
+                </svg>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>Common Refractive Indices</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px;">
+                        <strong>Vacuum:</strong> 1.00
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px;">
+                        <strong>Air:</strong> 1.0003
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px;">
+                        <strong>Water:</strong> 1.33
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px;">
+                        <strong>Glass:</strong> 1.5
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px;">
+                        <strong>Diamond:</strong> 2.42
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="periscope">
+            <h2>🔭 How Reflection is Employed in a Periscope</h2>
+            <p>A periscope is a practical application of the laws of reflection, using two plane mirrors positioned at 45° angles to allow observation around obstacles or over barriers.</p>
+
+            <div class="diagram-container">
+                <svg width="600" height="500" viewBox="0 0 600 500">
+                    <rect width="600" height="500" fill="#f8f9fa"/>
+                    <text x="300" y="30" text-anchor="middle" font-size="18" font-weight="bold">Periscope - Using Reflection</text>
+                    
+                    <!-- Periscope tube -->
+                    <rect x="250" y="80" width="100" height="300" fill="none" stroke="#2c3e50" stroke-width="4"/>
+                    <rect x="250" y="80" width="100" height="300" fill="#E8E8E8" opacity="0.3"/>
+                    
+                    <!-- Top mirror (45 degrees) -->
+                    <line x1="260" y1="90" x2="340" y2="130" stroke="#34495e" stroke-width="6"/>
+                    <text x="350" y="115" font-size="12" fill="#2c3e50" font-weight="bold">Mirror 1 (45°)</text>
+                    
+                    <!-- Bottom mirror (45 degrees) -->
+                    <line x1="260" y1="370" x2="340" y2="330" stroke="#34495e" stroke-width="6"/>
+                    <text x="350" y="350" font-size="12" fill="#2c3e50" font-weight="bold">Mirror 2 (45°)</text>
+                    
+                    <!-- Object -->
+                    <rect x="120" y="100" width="30" height="20" fill="#e74c3c"/>
+                    <text x="135" y="85" text-anchor="middle" font-size="14" fill="#e74c3c" font-weight="bold">Object</text>
+                    
+                    <!-- Observer eye -->
+                    <circle cx="450" cy="350" r="15" fill="#3498db"/>
+                    <text x="450" y="380" text-anchor="middle" font-size="14" fill="#3498db" font-weight="bold">Observer</text>
+                    
+                    <!-- Light path -->
+                    <line x1="150" y1="110" x2="260" y2="110" stroke="#f39c12" stroke-width="4"/>
+                    <polygon points="255,107 260,110 255,113" fill="#f39c12"/>
+                    
+                    <line x1="300" y1="110" x2="300" y2="350" stroke="#f39c12" stroke-width="4"/>
+                    <polygon points="297,345 300,350 303,345" fill="#f39c12"/>
+                    
+                    <line x1="300" y1="350" x2="435" y2="350" stroke="#f39c12" stroke-width="4"/>
+                    <polygon points="430,347 435,350 430,353" fill="#f39c12"/>
+                    
+                    <!-- Reflection arrows at mirrors -->
+                    <path d="M 275 105 Q 285 100 295 105" stroke="#27ae60" stroke-width="3" fill="none"/>
+                    <text x="285" y="95" text-anchor="middle" font-size="10" fill="#27ae60">Reflection</text>
+                    
+                    <path d="M 305 355 Q 315 360 325 355" stroke="#27ae60" stroke-width="3" fill="none"/>
+                    <text x="315" y="375" text-anchor="middle" font-size="10" fill="#27ae60">Reflection</text>
+                    
+                    <!-- Explanation -->
+                    <text x="300" y="430" text-anchor="middle" font-size="14" fill="#2c3e50">Light reflects twice at 45° mirrors</text>
+                    <text x="300" y="450" text-anchor="middle" font-size="14" fill="#2c3e50">allowing observation around obstacles</text>
+                </svg>
+            </div>
+
+            <div class="highlight">
+                <h3>How the Periscope Works:</h3>
+                <p><strong>Step 1:</strong> Light from the object hits the first mirror at 45°</p>
+                <p><strong>Step 2:</strong> The light reflects downward through the periscope tube</p>
+                <p><strong>Step 3:</strong> The second mirror reflects the light horizontally to the observer</p>
+                <p><strong>Result:</strong> The observer sees the object as if looking directly at it, despite the obstacle</p>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🚢 Periscope Applications</h3>
+                <p>Submarines • Tanks • Trenches • Security Systems • Architectural Design</p>
+            </div>
+        </div>
+
+        <div class="section" id="total-internal">
+            <h2>💎 Total Internal Reflection</h2>
+            <p>Total internal reflection occurs when light traveling from a denser medium to a rarer medium hits the interface at an angle greater than the critical angle. This phenomenon has revolutionized modern telecommunications.</p>
+
+            <div class="formula">
+                Critical Angle: sin θc = n₂/n₁ (where n₁ > n₂)<br>
+                For glass-air interface: θc ≈ 41.8°
+            </div>
+
+            <div class="diagram-container">
+                <svg width="700" height="400" viewBox="0 0 700 400">
+                    <rect width="700" height="400" fill="#f8f9fa"/>
+                    <text x="350" y="25" text-anchor="middle" font-size="18" font-weight="bold">Total Internal Reflection</text>
+                    
+                    <!-- Left diagram: Critical angle -->
+                    <g transform="translate(50, 50)">
+                        <text x="125" y="20" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">Critical Angle</text>
+                        
+                        <!-- Interface -->
+                        <line x1="50" y1="150" x2="200" y2="150" stroke="#2c3e50" stroke-width="4"/>
+                        <text x="60" y="140" font-size="12" fill="#4682B4">Glass (n=1.5)</text>
+                        <text x="60" y="170" font-size="12" fill="#87CEEB">Air (n=1.0)</text>
+                        
+                        <!-- Glass medium -->
+                        <rect x="50" y="80" width="150" height="70" fill="#B0E0E6" opacity="0.4"/>
+                        
+                        <!-- Normal -->
+                        <line x1="125" y1="80" x2="125" y2="220" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5"/>
+                        
+                        <!-- Critical ray -->
+                        <line x1="95" y1="120" x2="125" y2="150" stroke="#3498db" stroke-width="3"/>
+                        <line x1="125" y1="150" x2="180" y2="150" stroke="#27ae60" stroke-width="3"/>
+                        
+                        <text x="85" y="115" font-size="10" fill="#2c3e50">θc = 41.8°</text>
+                        <text x="140" y="145" font-size="10" fill="#2c3e50">90°</text>
+                    </g>
+                    
+                    <!-- Right diagram: Total internal reflection -->
+                    <g transform="translate(300, 50)">
+                        <text x="125" y="20" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">Beyond Critical Angle</text>
+                        
+                        <!-- Interface -->
+                        <line x1="50" y1="150" x2="200" y2="150" stroke="#2c3e50" stroke-width="4"/>
+                        <text x="60" y="140" font-size="12" fill="#4682B4">Glass (n=1.5)</text>
+                        <text x="60" y="170" font-size="12" fill="#87CEEB">Air (n=1.0)</text>
+                        
+                        <!-- Glass medium -->
+                        <rect x="50" y="80" width="150" height="70" fill="#B0E0E6" opacity="0.4"/>
+                        
+                        <!-- Normal -->
+                        <line x1="125" y1="80" x2="125" y2="220" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5"/>
+                        
+                        <!-- Incident and reflected rays -->
+                        <line x1="85" y1="110" x2="125" y2="150" stroke="#3498db" stroke-width="3"/>
+                        <line x1="125" y1="150" x2="165" y2="110" stroke="#e67e22" stroke-width="3"/>
+                        
+                        <text x="75" y="105" font-size="10" fill="#2c3e50">θ > θc</text>
+                        <text x="140" y="105" font-size="10" fill="#e67e22">100% Reflected</text>
+                        <text x="130" y="185" font-size="10" fill="#7f8c8d" style="font-style: italic;">No transmission</text>
+                    </g>
+                </svg>
+            </div>
+
+            <h3>🌐 Optical Fibers - Revolutionary Application</h3>
+            <p>Optical fibers use total internal reflection to transmit light signals over vast distances with minimal loss, forming the backbone of modern internet and telecommunications.</p>
+
+            <div class="diagram-container">
+                <svg width="700" height="300" viewBox="0 0 700 300">
+                    <rect width="700" height="300" fill="#f8f9fa"/>
+                    <text x="350" y="25" text-anchor="middle" font-size="16" font-weight="bold">Optical Fiber Structure</text>
+                    
+                    <!-- Fiber core (cross-section at start) -->
+                    <ellipse cx="80" cy="150" rx="12" ry="40" fill="#3498db" opacity="0.6"/>
+                    
+                    <!-- Fiber core (main length) -->
+                    <rect x="68" y="130" width="564" height="40" fill="#3498db" opacity="0.6"/>
+                    
+                    <!-- Fiber core (cross-section at end) -->
+                    <ellipse cx="620" cy="150" rx="12" ry="40" fill="#3498db" opacity="0.6"/>
+                    
+                    <!-- Cladding (cross-section at start) -->
+                    <ellipse cx="80" cy="150" rx="18" ry="55" fill="none" stroke="#27ae60" stroke-width="3"/>
+                    
+                    <!-- Cladding (main length) -->
+                    <rect x="62" y="115" width="576" height="70" fill="none" stroke="#27ae60" stroke-width="3"/>
+                    
+                    <!-- Cladding (cross-section at end) -->
+                    <ellipse cx="620" cy="150" rx="18" ry="55" fill="none" stroke="#27ae60" stroke-width="3"/>
+                    
+                    <!-- Labels -->
+                    <text x="100" y="110" font-size="12" fill="#27ae60" font-weight="bold">Cladding (n = 1.46)</text>
+                    <text x="100" y="195" font-size="12" fill="#3498db" font-weight="bold">Core (n = 1.48)</text>
+                    
+                    <!-- Light path showing zigzag pattern -->
+                    <path d="M 90 145 L 150 160 L 210 135 L 270 160 L 330 135 L 390 160 L 450 135 L 510 160 L 570 145" 
+                          stroke="#f39c12" stroke-width="4" fill="none"/>
+                    
+                    <!-- Reflection points -->
+                    <circle cx="150" cy="160" r="3" fill="#e74c3c"/>
+                    <circle cx="210" cy="135" r="3" fill="#e74c3c"/>
+                    <circle cx="270" cy="160" r="3" fill="#e74c3c"/>
+                    <circle cx="330" cy="135" r="3" fill="#e74c3c"/>\
+                    </svg>
+                </div>
+    </body>
+</html>
