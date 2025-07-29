@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force, Motion, and Newton's Laws</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Force, Motion, and Newton's Laws</h1>
+        
+        <h2>📐 Understanding Motion: Velocity and Acceleration</h2>
+        
+        <h3>Velocity</h3>
+        <p><strong>Velocity</strong> is the rate of change of position with respect to time. It's a vector quantity, meaning it has both magnitude (speed) and direction.</p>
+        
+        <div class="formula">
+            Velocity = Displacement / Time<br>
+            v = Δx / Δt (measured in m/s)
+        </div>
+        
+        <div class="diagram">
+            <h4>Velocity Example: Car Moving</h4>
+            <svg width="400" height="150">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                     refX="10" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c" />
+                    </marker>
+                </defs>
+                <!-- Car -->
+                <rect x="50" y="60" width="60" height="30" fill="#3498db" rx="5"/>
+                <circle cx="70" cy="100" r="8" fill="#2c3e50"/>
+                <circle cx="110" cy="100" r="8" fill="#2c3e50"/>
+                <!-- Velocity vector -->
+                <line x1="140" y1="75" x2="240" y2="75" class="velocity-vector"/>
+                <text x="190" y="65" text-anchor="middle" fill="#e74c3c" font-weight="bold">v = 20 m/s</text>
+                <!-- Ground line -->
+                <line x1="0" y1="120" x2="400" y2="120" stroke="#34495e" stroke-width="2"/>
+            </svg>
+            <p>A car moving at constant velocity of 20 m/s to the right</p>
+        </div>
+        
+        <h3>Acceleration</h3>
+        <p><strong>Acceleration</strong> is the rate of change of velocity with respect to time. It occurs when an object speeds up, slows down, or changes direction.</p>
+        
+        <div class="formula">
+            Acceleration = Change in Velocity / Time<br>
+            a = Δv / Δt (measured in m/s²)
+        </div>
+        
+        <div class="diagram">
+            <h4>Acceleration Example: Ball Thrown Upward</h4>
+            <svg width="300" height="400">
+                <!-- Ball at different positions -->
+                <circle cx="150" cy="350" r="15" fill="#f39c12" opacity="0.3"/>
+                <circle cx="150" cy="280" r="15" fill="#f39c12" opacity="0.5"/>
+                <circle cx="150" cy="210" r="15" fill="#f39c12" opacity="0.7"/>
+                <circle cx="150" cy="140" r="15" fill="#f39c12" opacity="0.9"/>
+                <circle cx="150" cy="70" r="15" fill="#f39c12"/>
+                
+                <!-- Velocity vectors (getting smaller) -->
+                <line x1="150" y1="350" x2="150" y2="300" class="velocity-vector"/>
+                <text x="170" y="325" fill="#e74c3c" font-size="12px">v₁</text>
+                
+                <line x1="150" y1="280" x2="150" y2="240" class="velocity-vector"/>
+                <text x="170" y="260" fill="#e74c3c" font-size="12px">v₂</text>
+                
+                <line x1="150" y1="210" x2="150" y2="180" class="velocity-vector"/>
+                <text x="170" y="195" fill="#e74c3c" font-size="12px">v₃</text>
+                
+                <line x1="150" y1="140" x2="150" y2="120" class="velocity-vector"/>
+                <text x="170" y="130" fill="#e74c3c" font-size="12px">v₄</text>
+                
+                <!-- Acceleration vector (constant downward) -->
+                <line x1="200" y1="70" x2="200" y2="120" class="acceleration-vector"/>
+                <text x="210" y="100" fill="#f39c12" font-weight="bold">a = -9.8 m/s²</text>
+                
+                <!-- Trajectory path -->
+                <path d="M 150 350 Q 150 200 150 70" class="motion-path"/>
+                
+                <text x="150" y="30" text-anchor="middle" font-weight="bold">Ball slowing down due to gravity</text>
+            </svg>
+        </div>
+        
+        <h2>⚡ Force</h2>
+        <p><strong>Force</strong> is a push or pull that can change the motion of an object. Forces are vector quantities with both magnitude and direction, measured in Newtons (N).</p>
+        
+        <div class="example">
+            <strong>Common Forces:</strong>
+            <ul>
+                <li>🌍 <strong>Gravitational force:</strong> Weight pulling objects downward</li>
+                <li>👋 <strong>Applied force:</strong> Push or pull by a person</li>
+                <li>🧲 <strong>Friction force:</strong> Resistance to motion between surfaces</li>
+                <li>🔧 <strong>Normal force:</strong> Support force perpendicular to a surface</li>
+            </ul>
+        </div>
+        
+        <h2>⚖️ Newton's Three Laws of Motion</h2>
+        
+        <h3>🛑 First Law: Law of Inertia</h3>
+        <p><strong>"An object at rest stays at rest, and an object in motion stays in motion at constant velocity, unless acted upon by a net external force."</strong></p>
+        
+        <div class="formula">
+            If ΣF = 0, then v = constant
+        </div>
+        
+        <div class="diagram">
+            <h4>First Law Examples</h4>
+            <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;">
+                <div style="text-align: center; margin: 10px;">
+                    <div class="object"></div>
+                    <p><strong>At Rest</strong><br>Book on table<br>No net force = No motion</p>
+                </div>
+                <div style="text-align: center; margin: 10px;">
+                    <div class="ball"></div>
+                    <div class="force-arrow">Push</div>
+                    <p><strong>Constant Motion</strong><br>Hockey puck on ice<br>No friction = Constant velocity</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example">
+            <strong>Real-world example:</strong> When you're in a car that suddenly stops, your body continues moving forward due to inertia. This is why we wear seatbelts!
+        </div>
+        
+        <h3>🎯 Second Law: F = ma</h3>
+        <p><strong>"The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass."</strong></p>
+        
+        <div class="formula">
+            Force = Mass × Acceleration<br>
+            F = ma (Newtons = kg × m/s²)
+        </div>
+        
+        <div class="diagram">
+            <h4>Second Law Demonstration</h4>
+            <svg width="500" height="200">
+                <!-- Scenario 1: Small force, small acceleration -->
+                <rect x="20" y="80" width="40" height="30" fill="#3498db" rx="3"/>
+                <text x="40" y="100" text-anchor="middle" fill="white" font-size="12px">5kg</text>
+                <line x1="70" y1="95" x2="120" y2="95" class="velocity-vector"/>
+                <text x="95" y="85" text-anchor="middle" fill="#e74c3c" font-size="12px">F=10N</text>
+                <text x="95" y="125" text-anchor="middle" font-size="12px">a=2m/s²</text>
+                
+                <!-- Scenario 2: Large force, large acceleration -->
+                <rect x="180" y="80" width="40" height="30" fill="#3498db" rx="3"/>
+                <text x="200" y="100" text-anchor="middle" fill="white" font-size="12px">5kg</text>
+                <line x1="230" y1="95" x2="320" y2="95" class="velocity-vector"/>
+                <text x="275" y="85" text-anchor="middle" fill="#e74c3c" font-size="12px">F=50N</text>
+                <text x="275" y="125" text-anchor="middle" font-size="12px">a=10m/s²</text>
+                
+                <!-- Ground lines -->
+                <line x1="0" y1="130" x2="500" y2="130" stroke="#34495e" stroke-width="2"/>
+            </svg>
+            <p>Same mass, different forces produce different accelerations</p>
+        </div>
+        
+        <div class="example">
+            <strong>Real-world example:</strong> A shopping cart is easier to push when empty (less mass) than when full (more mass). The same applied force produces greater acceleration with less mass.
+        </div>
+        
+        <h3>↔️ Third Law: Action-Reaction</h3>
+        <p><strong>"For every action, there is an equal and opposite reaction."</strong></p>
+        
+        <div class="formula">
+            F₁₂ = -F₂₁<br>
+            (Force of object 1 on object 2 equals negative force of object 2 on object 1)
+        </div>
+        
+        <div class="diagram">
+            <h4>Third Law Examples</h4>
+            <svg width="600" height="300">
+                <!-- Walking example -->
+                <g>
+                    <text x="100" y="30" text-anchor="middle" font-weight="bold">Walking</text>
+                    <!-- Person -->
+                    <circle cx="100" cy="80" r="15" fill="#f39c12"/>
+                    <rect x="90" y="95" width="20" height="40" fill="#3498db"/>
+                    <rect x="85" y="135" width="12" height="25" fill="#2c3e50"/>
+                    <rect x="103" y="135" width="12" height="25" fill="#2c3e50"/>
+                    
+                    <!-- Forces -->
+                    <line x1="100" y1="180" x2="60" y2="180" class="acceleration-vector"/>
+                    <text x="80" y="200" text-anchor="middle" fill="#f39c12" font-size="12px">Push back</text>
+                    
+                    <line x1="100" y1="60" x2="140" y2="60" class="velocity-vector"/>
+                    <text x="120" y="50" text-anchor="middle" fill="#e74c3c" font-size="12px">Move forward</text>
+                    
+                    <!-- Ground -->
+                    <line x1="20" y1="180" x2="180" y2="180" stroke="#34495e" stroke-width="3"/>
+                </g>
+                
+                <!-- Rocket example -->
+                <g>
+                    <text x="400" y="30" text-anchor="middle" font-weight="bold">Rocket Propulsion</text>
+                    <!-- Rocket -->
+                    <polygon points="380,70 420,70 410,50 390,50" fill="#e74c3c"/>
+                    <rect x="385" y="70" width="30" height="60" fill="#3498db"/>
+                    
+                    <!-- Gas exhaust -->
+                    <polygon points="390,130 410,130 405,170 395,170" fill="#f39c12" opacity="0.7"/>
+                    <line x1="400" y1="150" x2="400" y2="200" class="acceleration-vector"/>
+                    <text x="420" y="175" fill="#f39c12" font-size="12px">Gas pushes down</text>
+                    
+                    <!-- Rocket motion -->
+                    <line x1="400" y1="40" x2="400" y2="10" class="velocity-vector"/>
+                    <text x="420" y="25" fill="#e74c3c" font-size="12px">Rocket pushes up</text>
+                </g>
+            </svg>
+        </div>
+        
+        <div class="example">
+            <strong>Real-world examples:</strong>
+            <ul>
+                <li>🚀 <strong>Rocket:</strong> Hot gases are expelled downward (action), rocket is pushed upward (reaction)</li>
+                <li>🚶 <strong>Walking:</strong> You push back on the ground (action), ground pushes you forward (reaction)</li>
+                <li>🏊 <strong>Swimming:</strong> You push water backward (action), water pushes you forward (reaction)</li>
+                <li>🎈 <strong>Balloon:</strong> Air rushes out in one direction (action), balloon flies in opposite direction (reaction)</li>
+            </ul>
+        </div>
+        
+        <h2>🔄 Putting It All Together</h2>
+        
+        <div class="diagram">
+            <h4>Complete Motion Analysis: Ball Rolling Down a Ramp</h4>
+            <svg width="500" height="300">
+                <!-- Ramp -->
+                <line x1="50" y1="250" x2="400" y2="100" stroke="#8e44ad" stroke-width="8"/>
+                
+                <!-- Ball positions -->
+                <circle cx="80" cy="230" r="12" fill="#e74c3c" opacity="0.4"/>
+                <circle cx="150" cy="200" r="12" fill="#e74c3c" opacity="0.6"/>
+                <circle cx="220" cy="170" r="12" fill="#e74c3c" opacity="0.8"/>
+                <circle cx="290" cy="140" r="12" fill="#e74c3c"/>
+                
+                <!-- Forces at current position -->
+                <g transform="translate(290,140)">
+                    <!-- Weight -->
+                    <line x1="0" y1="0" x2="0" y2="40" class="acceleration-vector"/>
+                    <text x="5" y="50" fill="#f39c12" font-size="10px">Weight</text>
+                    
+                    <!-- Normal force -->
+                    <line x1="0" y1="0" x2="-20" y2="-15" class="velocity-vector"/>
+                    <text x="-40" y="-10" fill="#e74c3c" font-size="10px">Normal</text>
+                    
+                    <!-- Net force down ramp -->
+                    <line x1="0" y1="0" x2="30" y2="15" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowhead)"/>
+                    <text x="35" y="25" fill="#27ae60" font-size="10px">Net Force</text>
+                </g>
+                
+                <!-- Velocity vectors (increasing) -->
+                <line x1="80" y1="230" x2="95" y2="222" class="velocity-vector"/>
+                <line x1="150" y1="200" x2="175" y2="188" class="velocity-vector"/>
+                <line x1="220" y1="170" x2="255" y2="154" class="velocity-vector"/>
+                <line x1="290" y1="140" x2="335" y2="120" class="velocity-vector"/>
+                
+                <text x="250" y="50" text-anchor="middle" font-weight="bold">
+                    Ball accelerates down ramp due to component of gravitational force
+                </text>
+            </svg>
+        </div>
+        
+        <div class="example">
+            <strong>Analysis using Newton's Laws:</strong>
+            <ul>
+                <li><strong>1st Law:</strong> Ball was at rest until gravity provided net force</li>
+                <li><strong>2nd Law:</strong> F = ma, where F is component of weight down ramp</li>
+                <li><strong>3rd Law:</strong> Ball pushes on ramp, ramp pushes back (normal force)</li>
+            </ul>
+        </div>
+        
+        <h2>📝 Key Takeaways</h2>
+        
+        <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 20px 0;">
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin: 10px 0;">✅ <strong>Force</strong> is what causes changes in motion</li>
+                <li style="margin: 10px 0;">✅ <strong>Velocity</strong> describes how fast and in what direction</li>
+                <li style="margin: 10px 0;">✅ <strong>Acceleration</strong> describes changes in velocity</li>
+                <li style="margin: 10px 0;">✅ <strong>Newton's 1st Law:</strong> Objects resist changes in motion (inertia)</li>
+                <li style="margin: 10px 0;">✅ <strong>Newton's 2nd Law:</strong> F = ma connects force, mass, and acceleration</li>
+                <li style="margin: 10px 0;">✅ <strong>Newton's 3rd Law:</strong> Forces always come in equal and opposite pairs</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
